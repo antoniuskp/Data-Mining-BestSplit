@@ -16,7 +16,7 @@ namespace Data_Mining_BestSplit
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new FormBestSplit());
         }
     }
 }
