@@ -1,0 +1,10 @@
+C:\Users\HP\Documents\GitHub\Data-Mining-BestSplit\Data Mining-BestSplit\Data Mining-BestSplit\bin\Debug\Data Mining-BestSplit.exe.config
+C:\Users\HP\Documents\GitHub\Data-Mining-BestSplit\Data Mining-BestSplit\Data Mining-BestSplit\bin\Debug\Data Mining-BestSplit.exe
+C:\Users\HP\Documents\GitHub\Data-Mining-BestSplit\Data Mining-BestSplit\Data Mining-BestSplit\bin\Debug\Data Mining-BestSplit.pdb
+C:\Users\HP\Documents\GitHub\Data-Mining-BestSplit\Data Mining-BestSplit\Data Mining-BestSplit\obj\Debug\Data Mining-BestSplit.csproj.AssemblyReference.cache
+C:\Users\HP\Documents\GitHub\Data-Mining-BestSplit\Data Mining-BestSplit\Data Mining-BestSplit\obj\Debug\Data_Mining_BestSplit.FormBestSplit.resources
+C:\Users\HP\Documents\GitHub\Data-Mining-BestSplit\Data Mining-BestSplit\Data Mining-BestSplit\obj\Debug\Data_Mining_BestSplit.Properties.Resources.resources
+C:\Users\HP\Documents\GitHub\Data-Mining-BestSplit\Data Mining-BestSplit\Data Mining-BestSplit\obj\Debug\Data Mining-BestSplit.csproj.GenerateResource.cache
+C:\Users\HP\Documents\GitHub\Data-Mining-BestSplit\Data Mining-BestSplit\Data Mining-BestSplit\obj\Debug\Data Mining-BestSplit.csproj.CoreCompileInputs.cache
+C:\Users\HP\Documents\GitHub\Data-Mining-BestSplit\Data Mining-BestSplit\Data Mining-BestSplit\obj\Debug\Data Mining-BestSplit.exe
+C:\Users\HP\Documents\GitHub\Data-Mining-BestSplit\Data Mining-BestSplit\Data Mining-BestSplit\obj\Debug\Data Mining-BestSplit.pdb

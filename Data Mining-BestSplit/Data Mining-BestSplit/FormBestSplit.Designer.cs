@@ -50,6 +50,7 @@ namespace Data_Mining_BestSplit
             this.comboBoxDistance.Name = "comboBoxDistance";
             this.comboBoxDistance.Size = new System.Drawing.Size(390, 30);
             this.comboBoxDistance.TabIndex = 19;
+            this.comboBoxDistance.SelectedIndexChanged += new System.EventHandler(this.comboBoxDistance_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -90,6 +91,7 @@ namespace Data_Mining_BestSplit
             this.buttonBuka.TabIndex = 15;
             this.buttonBuka.Text = "&BUKA FILE";
             this.buttonBuka.UseVisualStyleBackColor = true;
+            this.buttonBuka.Click += new System.EventHandler(this.buttonBuka_Click);
             // 
             // dataGridViewBest
             // 
@@ -114,6 +116,7 @@ namespace Data_Mining_BestSplit
             this.Controls.Add(this.dataGridViewBest);
             this.Name = "FormBestSplit";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.FormBestSplit_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBest)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
