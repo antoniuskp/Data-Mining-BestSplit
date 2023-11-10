@@ -48,6 +48,8 @@ namespace Data_Mining_BestSplit
                 DataTable dataTable = LoadCsvFile(csvFilePath);
                 dataGridViewBest.DataSource = dataTable;
             }
+            ClassBestSplit classBestSplit = new ClassBestSplit(dataGridViewBest);
+            classBestSplit.countGINI(listBoxBest);
         }
         private DataTable LoadCsvFile(string filePath)
         {
