@@ -51,38 +51,69 @@ namespace Data_Mining_BestSplit
                     }
                 }
             }
-            for(int index = 0; index < listClassTypeCount.Count; index++)
+            for (int index = 0; index < listClassTypeCount.Count; index++)
             {
                 listBox.Items.Add(listClassTypeCount[index]);
             }
             int classCount = listClassTypeCount.Sum();
-            
+
             double giniParent = 0;
             for (int index = 0; index < listClassType.Count; index++)
             {
                 double freq = listClassTypeCount[index] / (double)classCount;
-                giniParent += Math.Pow(freq,2);
+                giniParent += Math.Pow(freq, 2);
             }
-            giniParent = Math.Round( 1 - giniParent, 4);
+            giniParent = Math.Round(1 - giniParent, 4);
             listBox.Items.Add(giniParent);
             //GINI Parent Selesei 
             //Cari GINI Feature
-            for(int indexColumn = 0; indexColumn < columnCount - 1; indexColumn ++)
+            List<double> listWeightedGiniFeature = new List<double>();
+            for (int indexColumn = 0; indexColumn < columnCount - 1; indexColumn++)
             {
                 List<object> listFeatureType = new List<object>();
-                for(int indexRow =0; indexRow < rowCount - 1; indexRow++)
+                double weightedGiniFeature = 0;
+                for (int indexRow = 0; indexRow < rowCount - 1; indexRow++)
                 {
                     if (!(listFeatureType.Contains(Data[indexColumn, indexRow].Value)))
                     {
                         listFeatureType.Add(Data[indexColumn, indexRow].Value);
                     }
                 }
-                foreach(object feature in listFeatureType)
+                foreach (object type in listFeatureType)
                 {
-                    listBox.Items.Add(feature);
+                    listClassTypeCount.Clear();
+                    foreach (object classType in listClassType)
+                    {
+                        listClassTypeCount.Add(0);
+                        for (int indexRow = 0; indexRow < rowCount - 1; indexRow++)
+                        {
+                            if (classType.Equals(Data[Data.ColumnCount - 1, indexRow].Value))
+                            {
+                                listClassTypeCount[listClassType.IndexOf(classType)]++;
+                            }
+                        }
+                    }
+                    classCount = listClassTypeCount.Sum();
+                    double giniFeature = 0;
+                    for (int index = 0; index < listClassType.Count; index++)
+                    {
+                        double freq = listClassTypeCount[index] / (double)classCount;
+                        giniFeature += Math.Pow(freq, 2);
+                    }
+                    giniFeature = Math.Round(1 - giniParent, 4);
+                    listBox.Items.Add("Gini Feature" + type);
+                    listBox.Items.Add(giniFeature);
+                    weightedGiniFeature += giniFeature * classCount/Data.Rows.Count;
                 }
-                listBox.Items.Add("");
+                weightedGiniFeature = Math.Round(weightedGiniFeature, 4);
+                listBox.Items.Add("Weighted Gini");
+                listBox.Items.Add(weightedGiniFeature);
+                listWeightedGiniFeature.Add(weightedGiniFeature);
             }
+            double minGiniFeature = listWeightedGiniFeature.Min();
+            int indexMinGini = listWeightedGiniFeature.IndexOf(minGiniFeature);
+            string bestSplit = Data.Columns[indexMinGini].Name;
+            listBox.Items.Add(bestSplit);
         }
     }
 }
