@@ -130,19 +130,20 @@ namespace Data_Mining_BestSplit
         }
         public List<double> ContinuousGini(int indexColumn)
         {
+            List<double> listGini = new List<double>(); //list Gini yang didapat
             List<double> listData = new List<double>(); //list angka2 di feat
             List<double> listDataMiddle = new List<double>(); //list angka2 setelah dibagi 2
             for (int i = 0; i < rowCount - 1; i++) //memasukkan ke list data
             {
                 if (Data[indexColumn, i].Value.ToString().EndsWith("K"))
                 {
-                    string newString = Data[indexColumn, i].Value.ToString().Substring(0, Data[indexColumn, i].Value.ToString().Length - 1) + "000";
+                    string newString = Data[indexColumn, i].Value.ToString().Substring(0, Data[indexColumn, i].Value.ToString().Length - 1);
                     listData.Add(double.Parse(newString));
                 }
                 else
                 {
-                    listData.Add(double.Parse(Data[indexColumn, i].Value.ToString()));
-                }
+/*                    listData.Add(double.Parse(Data[indexColumn, i].Value.ToString()));
+*/                }   
             }
 
             listData.Sort();
@@ -153,7 +154,6 @@ namespace Data_Mining_BestSplit
                 listDataMiddle.Add(nilaiTengah);
             }
 
-            List<double> listGini = new List<double>(); //list Gini yang didapat
             foreach (double number in listDataMiddle)
             {
                 List<double> itemKurangDari = new List<double>();
@@ -178,15 +178,15 @@ namespace Data_Mining_BestSplit
                     double inClassKurang = 0;
                     for (int i = 0; i < rowCount-1; i++)
                     {
-                        double angka = double.Parse(Data[indexColumn, i].Value.ToString().Substring(0, Data[indexColumn, i].Value.ToString().Length - 1) + "000");
+                        double angka = double.Parse(Data[indexColumn, i].Value.ToString().Substring(0, Data[indexColumn, i].Value.ToString().Length - 1));
                         object tipe = Data[columnCount - 1, i].Value;
                         if ((angka<= number) && 
-                            (tipe == type))
+                            (tipe.Equals(type)))
                         {
                             inClassKurang++;
                         }
                         else if ((angka > number) && 
-                            (tipe == type))
+                            (tipe.Equals(type)))
                         {
                             inClassLebih++;
                         }
@@ -194,17 +194,19 @@ namespace Data_Mining_BestSplit
                     itemKurangDari.Add(inClassKurang);
                     itemLebihDari.Add(inClassLebih);
                 }
-                double giniKecilKurang = 1;
+                double giniKecilKurang = 0;
                 foreach (int angka in itemKurangDari)
                 {
-                    giniKecilKurang -= Math.Pow((angka / kurangDari), 2);
+                    giniKecilKurang += Math.Pow((angka / (double)kurangDari), 2);
                 }
-                double giniKecilLebih = 1;
+                giniKecilKurang = Math.Round(1 - giniKecilKurang, 4);
+                double giniKecilLebih = 0;
                 foreach (int angka in itemLebihDari)
                 {
-                    giniKecilLebih -= Math.Pow((angka / lebihDari), 2);
+                    giniKecilLebih += Math.Pow((angka / (double)lebihDari), 2);
                 }
-                double gini = (giniKecilKurang * kurangDari / (kurangDari + lebihDari)) + (giniKecilLebih * lebihDari / (kurangDari + lebihDari));
+                giniKecilLebih = Math.Round(1 - giniKecilLebih, 4);
+                double gini = (giniKecilKurang * kurangDari / (double)(kurangDari + lebihDari)) + (giniKecilLebih * lebihDari / (double)(kurangDari + lebihDari));
                 listGini.Add(gini);
             }
             return listGini;
