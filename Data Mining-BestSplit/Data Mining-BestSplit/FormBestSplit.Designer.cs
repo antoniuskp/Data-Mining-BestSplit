@@ -81,6 +81,7 @@ namespace Data_Mining_BestSplit
             this.listBoxBest.Name = "listBoxBest";
             this.listBoxBest.Size = new System.Drawing.Size(626, 526);
             this.listBoxBest.TabIndex = 16;
+            this.listBoxBest.SelectedIndexChanged += new System.EventHandler(this.listBoxBest_SelectedIndexChanged);
             // 
             // buttonBuka
             // 

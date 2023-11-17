@@ -98,5 +98,10 @@ namespace Data_Mining_BestSplit
         {
 
         }
+
+        private void listBoxBest_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

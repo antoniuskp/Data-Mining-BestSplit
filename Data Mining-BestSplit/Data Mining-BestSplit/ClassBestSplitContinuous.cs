@@ -69,7 +69,7 @@ namespace Data_Mining_BestSplit
             int columnIndex = 1;
             for(int i=0; i < rowCount-1; i++) //memasukkan ke list data
             {
-                listData.Add((double)Data[columnIndex,i].Value);
+                listData.Add(double.Parse(Data[columnIndex,i].Value.ToString()));
             }
 
             listData.Sort();
